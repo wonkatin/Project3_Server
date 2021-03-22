@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 // mongoose config
-const URL = process.env.MONGODB_URI || 'mongodb://localhost/dbname'
+const URL = process.env.MONGODB_URI || 'mongodb://localhost/test_tripTracker'
 
 mongoose.connect(URL, {
     useNewUrlParser: true,

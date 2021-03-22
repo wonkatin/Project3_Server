@@ -1,0 +1,75 @@
+USERS
+id
+username 
+email
+password 
+firstName
+lastName
+img
+DOB
+city                   
+[trip]---------------
+                     - name
+                     - location
+                     - fromDate
+                     - toDate
+                     - image
+                    |- [checklist] ------ checklistId                     
+                    |                           - title ------------------------- genericList = {
+                    |                                                                itemName(String), 
+                    |                                                                 checked(boolean)}
+                    |                           - date                           
+                    |                 
+                    |                  
+                    |
+                    |
+                    |
+                    |
+                    |
+                    |- notepad -------- noteId
+                    |                        ----- date
+                    |                        ----- title
+                    |                        ----- content
+                    |
+                    |
+                    |- [flightInfo]--------- flightInfoId
+                    |                              --------- airline
+                    |                              --------- flightNumber
+                    |                              --------- departureTime
+                    |                              --------- arrivalTime
+                    |                              --------- destination
+                    |                              --------- boardingTime
+                    |                              --------- gate
+                    |                              --------- departingCity
+                    |                              --------- seatId
+                    | 
+                    |- [lodgingInfo]-------- lodgingInfoId 
+                    |                              --------- name                  
+                    |                              --------- address                  
+                    |                              --------- checkInTime                  
+                    |                              --------- checkOutTime                  
+                    |                              --------- contact                  
+                    |                              --------- reservationNumber                  
+                    |                              --------- checkInDate                  
+                    |                              --------- checkOutDate
+                    |- tripBudget--------- tripBudgetId
+                    |                              --------- name             
+                    |                              --------- cost             
+                    |                              --------- date   
+                    |           
+                    |           
+                    |- tripSchedule------- tripScheduleId 
+                    |                              --------- name        
+                    |                              --------- date        
+                    |                              --------- startTime        
+                    |                              --------- endTime        
+                    |                              --------- location       
+                    |                              --------- completed(boolean)
+
+
+
+
+
+
+- weather (stretch goal)
+
