@@ -1,3 +1,143 @@
 body {
   text-align: center;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: white;
+}
+
+.background {
+  background-image: url("../img/cliffs.jpg");
+  background-size: cover;
+  box-shadow: inset 100em 100em rgba(255, 255, 255, 0.4);
+  height: 100vh;
+}
+
+.background-trips {
+  background-image: url("../img/pink-sky.jpeg");
+  background-size: cover;
+  box-shadow: inset 100em 100em rgba(255, 255, 255, 0.4);
+  height: 100vh;
+}
+
+nav {
+  background-color: rgba(151, 192, 255, 0.8);
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  transition-duration: 0.4s;
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+nav a:hover {
+  color: #9661ff;
+}
+
+.learn-link {
+  margin: 20px;
+}
+
+.learn-link a {
+  text-decoration: none;
+  color: white;
+  transition-duration: 0.4s;
+  font-family: sans-serif;
+}
+
+.learn-link a:hover{
+  color: #cfb7ff;
+}
+
+
+.button {
+  background-color: #0c92da;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid #0c92da;
+  width: 100px;
+}
+
+.button:hover {
+  background-color: #00bfff; 
+  color: rgb(255, 255, 255); 
+  border: 2px solid #00bfff;
+}
+
+.homepage-logo {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homepage-logo img {
+  width: 50vw;
+  max-width: 500px;
+}
+
+.trip-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.trip-container a {
+  text-decoration: none;
+}
+
+.trip-card {
+  height: 200px;
+  width: 200px;
+  border: 4px solid white;
+  border-radius: 50%;
+  background-image: url('../img/tropical.jpeg');
+  background-size: cover;
+  box-shadow: inset 100em 100em rgba(255, 255, 255, 0.2);
+  transition-duration: .4s;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.trip-card:hover {
+  box-shadow: inset 100em 100em rgba(255, 255, 255, 0.6);
+  color: rgb(70, 70, 70);
+  border: 4px solid rgb(70, 70, 70);
+}
+
+.trip-card h2 {
+  margin-bottom: 0;
+}
+
+.trip-card h4 {
+  margin-top: 10px;
+}
+
+.upcoming-links a {
+  transition-duration: .4s;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.upcoming-links a:hover {
+  color: #9661ff;
 }
