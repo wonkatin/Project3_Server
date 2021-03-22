@@ -6,7 +6,20 @@ const userSchema = new mongoose.Schema({
     password: String, 
     firstName: String, 
     lastName: String,
-    city: String   
+    city: String, 
+    DOB: {
+        type: Date
+    }, 
+    img:
+    {
+        data: Buffer,
+        contentType: String
+    },
+    trips: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Trip'
+    }]
+
 })
 
 //Step 2 - generate the model!
