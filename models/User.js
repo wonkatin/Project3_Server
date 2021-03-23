@@ -1,23 +1,44 @@
 const mongoose = require('mongoose') 
 
 const userSchema = new mongoose.Schema({
-    username: String, 
-    email: String,
-    password: String, 
-    firstName: String, 
-    lastName: String,
-    city: String, 
+    username: {
+        type: String,
+        required: true
+    }, 
+    email: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    }, 
+    firstName: {
+        type: String,
+        required: false
+    }, 
+    lastName: {
+        type: String,
+        required: false
+    },
+    city: {
+        type: String,
+        required: false
+    }, 
     DOB: {
-        type: Date
+        type: Date,
+        required: false
     }, 
     img:
     {
         data: Buffer,
-        contentType: String
+        contentType: String,
+        required: false
     },
     trips: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Trip'
+        ref: 'Trip',
+        required: false
     }]
 
 })

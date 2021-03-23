@@ -83,10 +83,6 @@ router.post('/login', async (req, res) =>{
 
 
 
-
-
-
-
 router.get('/:userId/profile', async (req, res) =>{
     try{
         id = req.params.userId
@@ -102,7 +98,6 @@ router.get('/:userId/profile', async (req, res) =>{
 
 router.put('/:userId/profile', async (req, res) =>{
     try{
-        console.log(req.params.userId)
         const updatedUser = await User.findByIdAndUpdate({
             _id: req.params.userId
         }, {
@@ -119,6 +114,22 @@ router.put('/:userId/profile', async (req, res) =>{
         console.log(err)
     }
 })
+
+
+router.delete('/:userId/profile', async (req, res) =>{
+    try{
+        const deletedUser = await User.findByIdAndDelete({
+            _id: req.params.userId
+        })
+        res.json({ msg:'hello from delete users/:userId/profile'})
+
+
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+
 
 
 
