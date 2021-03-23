@@ -2,6 +2,7 @@ const router = require('express').Router()
 const User = require('../models/User.js')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const authLockedRoute = require('./authLockedRoute')
 
 
 
@@ -73,13 +74,20 @@ router.post('/login', async (req, res) =>{
     }
 })
 
-router.post('/register', async (req, res) =>{
-    try{
 
-    } catch(err) {
-        console.log(err)
-    }
-})
+
+
+
+
+
+
+// router.post('/register', async (req, res) =>{
+//     try{
+
+//     } catch(err) {
+//         console.log(err)
+//     }
+// })
 
 
 
