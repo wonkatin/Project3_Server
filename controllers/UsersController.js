@@ -83,12 +83,12 @@ router.post('/login', async (req, res) =>{
 
 
 
-router.get('/:userId/profile', async (req, res) =>{
+router.get('/:userId/account', async (req, res) =>{
     try{
         id = req.params.userId
         const user = await User.findById(id)
         console.log(user)
-        res.json({ msg:'hello from get users/:userId/profile!'})
+        res.json({ msg:'hello from get users/:userId/account!'})
 
 
     } catch(err) {
@@ -96,7 +96,7 @@ router.get('/:userId/profile', async (req, res) =>{
     }
 })
 
-router.put('/:userId/profile', async (req, res) =>{
+router.put('/:userId/account', async (req, res) =>{
     try{
         const updatedUser = await User.findByIdAndUpdate({
             _id: req.params.userId
@@ -107,7 +107,7 @@ router.put('/:userId/profile', async (req, res) =>{
             DOB: req.body.DOB,
             img: req.body.img, 
         })
-        res.json({ msg:'hello from put users/:userId/profile'})
+        res.json({ msg:'hello from put users/:userId/account'})
 
 
     } catch(err) {
@@ -116,12 +116,12 @@ router.put('/:userId/profile', async (req, res) =>{
 })
 
 
-router.delete('/:userId/profile', async (req, res) =>{
+router.delete('/:userId/account', async (req, res) =>{
     try{
         const deletedUser = await User.findByIdAndDelete({
             _id: req.params.userId
         })
-        res.json({ msg:'hello from delete users/:userId/profile'})
+        res.json({ msg:'hello from delete users/:userId/account'})
 
 
     } catch(err) {
