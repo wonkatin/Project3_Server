@@ -15,19 +15,23 @@ const userSchema = new mongoose.Schema({
     }, 
     firstName: {
         type: String,
-        required: false
+        required: false, 
+        default: ''
     }, 
     lastName: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     },
     city: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     }, 
     DOB: {
         type: Date,
-        required: false
+        required: false,
+        default: ''
     }, 
     img:
     {

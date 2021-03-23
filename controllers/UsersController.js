@@ -19,7 +19,10 @@ router.post('/register', async (req, res) =>{
             email: req.body.email
         })
         if(findUser) return res.status(400).json({ msg: 'email already exists'})
-        
+        if(req.body.username === '') return res.status(400).json({ msg: 'Please enter username'})
+        if(req.body.email === '') return res.status(400).json({ msg: 'Please enter email'})
+        if(req.body.password === '') return res.status(400).json({ msg: 'Please enter password'})
+    
         const password = req.body.password
         const saltRounds = 12
         const hashedPassword = await bcrypt.hash(password, saltRounds)
@@ -88,7 +91,7 @@ router.get('/:userId/account', async (req, res) =>{
         id = req.params.userId
         const user = await User.findById(id)
         console.log(user)
-        res.json({ msg:'hello from get users/:userId/account!'})
+        res.json(user)
 
 
     } catch(err) {
@@ -129,52 +132,6 @@ router.delete('/:userId/account', async (req, res) =>{
     }
 })
 
-
-
-
-
-
-
-
-
-
-
-// router.get('/:userId/trips', async (req, res) =>{
-//     try{
-
-
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
-
-
-
-
-
-
-
-// router.post('/register', async (req, res) =>{
-//     try{
-
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
-// router.post('/register', async (req, res) =>{
-//     try{
-
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
-// router.post('/register', async (req, res) =>{
-//     try{
-
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
 
 
 
