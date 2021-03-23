@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../models/User.js')
+const Trip = require('../models/Trip.js')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authLockedRoute = require('./authLockedRoute')
@@ -27,6 +28,11 @@ router.post('/register', async (req, res) =>{
             username: req.body.username, 
             email: req.body.email, 
             password: hashedPassword,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            city: req.body.city,
+            DOB: req.body.DOB,
+            img: req.body.img, 
         })
         await newUser.save()
 
@@ -81,8 +87,50 @@ router.post('/login', async (req, res) =>{
 
 
 
-// router.post('/register', async (req, res) =>{
+router.get('/:userId/profile', async (req, res) =>{
+    try{
+        id = req.params.userId
+        const user = await User.findById(id)
+        console.log(user)
+        res.json({ msg:'hello from get users/:userId/profile!'})
+
+
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+router.put('/:userId/profile', async (req, res) =>{
+    try{
+        console.log(req.params.userId)
+        const updatedUser = await User.findByIdAndUpdate({
+            _id: req.params.userId
+        }, {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            city: req.body.city,
+            DOB: req.body.DOB,
+            img: req.body.img, 
+        })
+        res.json({ msg:'hello from put users/:userId/profile'})
+
+
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+
+
+
+
+
+
+
+
+// router.get('/:userId/trips', async (req, res) =>{
 //     try{
+
 
 //     } catch(err) {
 //         console.log(err)
