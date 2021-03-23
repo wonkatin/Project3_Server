@@ -19,6 +19,7 @@ app.use(cors())
 
 //request body parser
 app.use(express.json())
+app.use(express.urlencoded({ extended: false}))
 
 const middleware = (req, res, next) => {
     console.log('Hello from a middleware')
@@ -30,6 +31,8 @@ app.get('/', middleware, (req, res) => {
     res.json({ msg: 'Hello world!'})
 })
 // controllers
+app.use('/users', require('./controllers/UsersController'))
+
 
 // tell express to listen on a port
 app.listen(PORT, () => {
