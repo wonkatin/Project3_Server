@@ -42,61 +42,24 @@ router.post('/:userId/trips/:tripId/tripExpenses', async (req, res) => {
     }
 })
 
-// router.get('/:userId/trips/:tripId/tripExpenses/', async (req, res) => {
-//     try{
-//         const user = await User.findById(req.params.userId)
-//         if(user){
-//             const trip = await Trip.findById(req.params.tripId)
-//             res.json(trip)
-//         }
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
 
-// router.put('/:userId/trips/:tripId', async (req, res) => {
-//     try{
-//         const user = await User.findById(req.params.userId)
-//         if(user){
-//             const updatedTrip = await Trip.findOneAndUpdate({
-//                 _id: req.params.tripId
-//             },{
-//                 name: req.body.name,
-//                 location: req.body.location,
-//                 fromDate: req.body.fromDate,
-//                 toDate: req.body.toDate
-//             })
-//         }
-//         const trip = await Trip.findById(req.params.tripId)
-//         res.json(trip)    
-//     } catch(err) {
-//         console.log(err)
-//     }
-// })
 
-router.delete('/:userId/trips/:tripId/tripExpenses/:tripExpensesId', async (req, res) =>{
+router.delete('/:userId/trips/:tripId/tripExpenses/:tripExpenseId', async (req, res) =>{
     try{
         const user= await User.findById(req.params.userId)
         if(user){
-            const trip = await Trip.findByIdAndDelete(req.params.tripId)
-            res.json({ msg: "Trip Deleted!"})
+            const trip = await Trip.findById(req.params.tripId)
+            if(trip){
+                const tripExpense = await trip.tripExpenses.id(req.params.tripExpenseId).remove()
+                console.log(tripExpense)
+                await trip.save()
+                res.json({ msg: 'TripExpense deleted!'})
+            }
         }
     } catch(err) {
         console.log(err)
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router
