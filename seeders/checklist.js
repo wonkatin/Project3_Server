@@ -29,6 +29,10 @@ const data = [
                 'date': '',
                 'clothing and accessories': [
                     {
+                      'itemName': 'face mask',
+                      'checked': false  
+                    },
+                    {
                       'itemName': 'sleepwear',
                       'checked': false  
                     },
@@ -103,25 +107,222 @@ const data = [
                     {
                       'itemName': 'shoes',
                       'checked': false  
+                    },
+                    {
+                      'itemName': 'boots',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'sandals',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'belts',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'ties',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'jewelry',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'sunglasses',
+                      'checked': false  
                     }
                 ],
                 'toiletries': [
                     {
-                      'itemName': '',
+                      'itemName': 'toothbrush',
                       'checked': false  
                     },
+                    {
+                      'itemName': 'toothpaste',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'dental floss',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'soap',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'shampoo',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'conditioner',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'deodorant',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'brush',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'hairstyling accessories',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'hairstyling tools',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'lotion',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'sunscreen',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'contact lenses/solution',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'shaving supplies',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'makeup and accessories',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'feminine-hygiene products',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'nail file/clippers',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'tweezers',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'hand sanitizer',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'first aid',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'medications',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'vitamins',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'insect repellent',
+                      'checked': false  
+                    },,
+                    {
+                      'itemName': 'lint roller',
+                      'checked': false  
+                    }
                     
                 ],
                 'miscellaneous': [
                     {
-                      'itemName': '',
+                      'itemName': 'phone',
+                      'checked': false  
+                    },,
+                    {
+                      'itemName': 'laptop',
                       'checked': false  
                     },
-                    
-                ],
-                'carry-on': [
                     {
-                      'itemName': '',
+                      'itemName': 'camera',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'headphones',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'electronic chargers',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'cash',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'credit cards',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'travel documents',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'voltage adaptors',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'day bag, backpack or purses',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'snacks',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'journal',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'books',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'travel blanket',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'travel pillow',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'earplugs and eye mask',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'flashlight',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'batteries',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'binoculars',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'maps',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'camping gear',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'reusable water bottle',
+                      'checked': false  
+                    },
+                    {
+                      'itemName': 'games',
                       'checked': false  
                     },
                     
