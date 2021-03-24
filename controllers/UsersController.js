@@ -61,20 +61,15 @@ router.post('/login', async (req, res) =>{
         const foundUser = await User.findOne({
             email: req.body.email
         })
-
         const noLoginMessage = 'Incorrect username or password'
         if(!foundUser) return res.status(400).json({ msg: noLoginMessage })
-
         const matchPassword = await bcrypt.compare(req.body.password, foundUser.password)
-
         if(!matchPassword) return res.status(400).json({ msg: noLoginMessage })
-
         const payload = {
             username: foundUser.username, 
             email: foundUser.email,
             id: foundUser.id
         }
-
         const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: 60 * 60 })
         res.json({ token })
     } catch(err) {
@@ -113,7 +108,6 @@ router.put('/:userId/account', authLockedRoute, async (req, res) =>{
     }
 })
 
-
 router.delete('/:userId/account', authLockedRoute, async (req, res) =>{
     try{
         const deletedUser = await User.findByIdAndDelete({
@@ -126,17 +120,5 @@ router.delete('/:userId/account', authLockedRoute, async (req, res) =>{
         console.log(err)
     }
 })
-
-router.get('/:userId/trips', async (req, res) => {
-    try{
-        const id = req.params.userId
-        const user = await User.findById(id)
-        res.json(user.trips)
-    } catch(err) {
-        console.log(err)
-    }
-})
-
-
 
 module.exports = router
