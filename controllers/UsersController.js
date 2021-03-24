@@ -83,23 +83,18 @@ router.post('/login', async (req, res) =>{
     }
 })
 
-
-
-
 router.get('/:userId/account', async (req, res) =>{
     try{
-        id = req.params.userId
+        const id = req.params.userId
         const user = await User.findById(id)
         console.log(user)
         res.json(user)
-
-
     } catch(err) {
         console.log(err)
     }
 })
 
-router.put('/:userId/account', async (req, res) =>{
+router.put('/:userId/account', authLockedRoute, async (req, res) =>{
     try{
         const updatedUser = await User.findByIdAndUpdate({
             _id: req.params.userId
@@ -110,7 +105,7 @@ router.put('/:userId/account', async (req, res) =>{
             DOB: req.body.DOB,
             img: req.body.img, 
         })
-        res.json({ msg:'hello from put users/:userId/account'})
+        res.json(updatedUser)
 
 
     } catch(err) {
@@ -119,12 +114,12 @@ router.put('/:userId/account', async (req, res) =>{
 })
 
 
-router.delete('/:userId/account', async (req, res) =>{
+router.delete('/:userId/account', authLockedRoute, async (req, res) =>{
     try{
         const deletedUser = await User.findByIdAndDelete({
             _id: req.params.userId
         })
-        res.json({ msg:'hello from delete users/:userId/account'})
+        res.json({ msg:'Account has been deleted'})
 
 
     } catch(err) {
@@ -132,6 +127,15 @@ router.delete('/:userId/account', async (req, res) =>{
     }
 })
 
+router.get('/:userId/trips', async (req, res) => {
+    try{
+        const id = req.params.userId
+        const user = await User.findById(id)
+        res.json(user.trips)
+    } catch(err) {
+        console.log(err)
+    }
+})
 
 
 
