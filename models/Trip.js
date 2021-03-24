@@ -42,7 +42,28 @@ const tripExpensesSchema = new mongoose.Schema({
     purchase: String, 
     cost: Number, 
     date: String
-
+})
+const tripChecklistSchema = new mongoose.Schema({
+    title: String,
+    date: new Date,
+    clothing_and_accessories: [
+        {
+            itemName: String,
+            checked: Boolean
+        }
+    ],
+    toiletries: [
+        {
+            itemName: String,
+            checked: Boolean
+        }
+    ],
+    miscellaneous: [
+        {
+            itemName: String,
+            checked: Boolean
+        }
+    ]
 })
 
 // Step 1 - Define the Schema
@@ -64,15 +85,17 @@ const tripSchema = new mongoose.Schema({
     lodgingInfo: [lodgingInfoSchema],
     tripSchedule: [tripScheduleSchema],
     notes: [notesSchema],
-    tripExpenses: [tripExpensesSchema]
+    tripExpenses: [tripExpensesSchema],
+    tripChecklist: [tripChecklistSchema]
 }, {
     timestamps: true
 })
 
 const Trip = mongoose.model('Trip', tripSchema)
 const FlightInfo = mongoose.model('FlightInfo', flightInfoSchema)
+const TripChecklist = mongoose.model('TripChecklist', tripChecklistSchema)
 
-module.exports = { Trip, FlightInfo }
+module.exports = { Trip, FlightInfo, TripChecklist }
 
 
 
