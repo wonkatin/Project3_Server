@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 const flightInfoSchema = new mongoose.Schema({
     airline: String,
     flightNumber: String,
