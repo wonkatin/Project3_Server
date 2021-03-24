@@ -73,18 +73,27 @@ const tripChecklistSchema = new mongoose.Schema({
 
 // Step 1 - Define the Schema
 const tripSchema = new mongoose.Schema({
-    name: String,
-    location: String,
+    name: {
+        type: String,
+        default: ''
+    },
+    location: {
+        type: String,
+        default: ''
+    },
     fromDate: {
-        type: Date
+        type: Date,
+        default: new Date
     },
     toDate: {
-        type: Date
+        type: Date,
+        default: new Date
     },
     img:
     {
         data: Buffer,
-        contentType: String
+        contentType: String,
+        default: ''
     }, 
     flightInfo: [flightInfoSchema], 
     lodgingInfo: [lodgingInfoSchema],
