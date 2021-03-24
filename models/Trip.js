@@ -108,8 +108,9 @@ const tripSchema = new mongoose.Schema({
 const Trip = mongoose.model('Trip', tripSchema)
 const FlightInfo = mongoose.model('FlightInfo', flightInfoSchema)
 const TripChecklist = mongoose.model('TripChecklist', tripChecklistSchema)
+const TripExpenses = mongoose.model('TripExpenses', tripExpensesSchema)
 
-module.exports = { Trip, FlightInfo, TripChecklist }
+module.exports = { Trip, FlightInfo, TripChecklist, TripExpenses }
 
 
 
