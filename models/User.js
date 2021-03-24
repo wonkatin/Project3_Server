@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema({
     DOB: {
         type: Date,
         required: false,
-        default: ''
+        default: new Date
     }, 
     img:
     {
