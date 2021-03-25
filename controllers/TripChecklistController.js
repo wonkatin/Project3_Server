@@ -29,7 +29,6 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
             const trip = await Trip.findById(tripId)
             if(trip){
                 const newTripChecklist = await TripChecklist.create({
-                    date: new Date, 
                     items: [
                         {
                             itemName: req.body.itemName,
@@ -47,10 +46,13 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
         console.log(err)
     }
 })
-//map over items array/create index find by index
+
+//map over items array/create index 
+//find by index
 // push item into items array
-//create new checklist item
-router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
+
+//create new checklist item should this be UPDATE/PUT instead of CREATE??
+router.post('/:userId/trips/:tripId/tripChecklist/items', async (req, res) => {
     try{
         tripId = req.params.tripId
         const user = await User.findById(req.params.userId)
@@ -71,7 +73,7 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
 })
 
 //delete checklist item
-router.delete('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req, res) =>{
+router.delete('/:userId/trips/:tripId/tripChecklist/items', async (req, res) =>{
     try{
         const user= await User.findById(req.params.userId)
         if(user){

@@ -45,7 +45,6 @@ const tripExpensesSchema = new mongoose.Schema({
     date: String
 })
 const tripChecklistSchema = new mongoose.Schema({
-    date: String,
     items: [
         {
             itemName: String,
