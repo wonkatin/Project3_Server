@@ -34,6 +34,7 @@ app.get('/', middleware, (req, res) => {
 app.use('/users', require('./controllers/UsersController'))
 app.use('/users', require('./controllers/TripsController'))
 app.use('/users', require('./controllers/TripExpensesController'))
+app.use('/users', require('./controllers/TripChecklistController'))
 
 
 // tell express to listen on a port
