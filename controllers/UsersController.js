@@ -34,15 +34,20 @@ router.post('/register', async (req, res) =>{
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             city: req.body.city,
-            DOB: req.body.DOB,
-            img: req.body.img, 
+            img: req.body.img,
+            trips: req.body.trips
         })
         await newUser.save()
 
         const payload = {
             username: newUser.username,
             email: newUser.email, 
-            id: newUser.id
+            id: newUser.id,
+            firstName: newUser.firstName,
+            lastName: newUser.lastName,
+            city: newUser.city,
+            img: newUser.img,
+            trips: newUser.trips
         }
 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 60 * 60})
@@ -66,9 +71,14 @@ router.post('/login', async (req, res) =>{
         const matchPassword = await bcrypt.compare(req.body.password, foundUser.password)
         if(!matchPassword) return res.status(400).json({ msg: noLoginMessage })
         const payload = {
-            username: foundUser.username, 
-            email: foundUser.email,
-            id: foundUser.id
+            username: foundUser.username,
+            email: foundUser.email, 
+            id: foundUser.id,
+            firstName: foundUser.firstName,
+            lastName: foundUser.lastName,
+            city: foundUser.city,
+            img: foundUser.img,
+            trips: foundUser.trips
         }
         const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: 60 * 60 })
         res.json({ token })
