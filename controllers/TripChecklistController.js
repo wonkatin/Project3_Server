@@ -47,24 +47,30 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
     }
 })
 
-//map over items array/create index 
-//find by index
-// push item into items array
 
-//create new checklist item should this be UPDATE/PUT instead of CREATE??
-router.post('/:userId/trips/:tripId/tripChecklist/items', async (req, res) => {
+
+//create new item inside items array
+router.post('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req, res) => {
     try{
         tripId = req.params.tripId
         const user = await User.findById(req.params.userId)
+        console.log(user)
         if(user){
-            const trip = await Trip.findById(tripId)
+            const trip = await Trip.findById(tripId).populate('tripChecklist')
             if(trip){
-                const newTripChecklist = await TripChecklist.create({
-                 
-                })
-                trip.tripChecklist.push(newTripChecklist)
-                await trip.save()
-                res.json(newTripChecklist )
+                const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
+                console.log(tripChecklist)
+                if(tripChecklist){
+                    const newItem = await tripChecklist.items.create({
+                            itemName: req.body.itemName,
+                            checked: req.body.checked,
+                            category: req.body.category
+                    })
+                    tripChecklist.items.push(newItem)
+                    trip.tripChecklist = tripChecklist
+                    await trip.save()
+                    res.json(newItem)
+                }
             }  
         }
     } catch(err) {
@@ -72,17 +78,24 @@ router.post('/:userId/trips/:tripId/tripChecklist/items', async (req, res) => {
     }
 })
 
-//delete checklist item
-router.delete('/:userId/trips/:tripId/tripChecklist/items', async (req, res) =>{
+//delete item from checklist items array
+router.delete('/:userId/trips/:tripId/tripChecklist/:tripChecklistId/items/:itemId', async (req, res) =>{
     try{
         const user= await User.findById(req.params.userId)
+        // console.log(user)
         if(user){
             const trip = await Trip.findById(req.params.tripId)
+            // console.log(trip)
             if(trip){
-                const tripExpense = await trip.tripChecklist.id(req.params.tripChecklistId).remove()
-                console.log(tripChecklist)
-                await trip.save()
-                res.json({ msg: 'Item deleted!'})
+                const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
+                // console.log(tripChecklist)
+                if(tripChecklist){
+                    const deletedItem = await tripChecklist.items.id(req.params.itemId).remove()
+                    console.log(tripChecklist)
+                    trip.tripChecklist = tripChecklist
+                    await trip.save()
+                    res.json({msg: 'Item deleted!'})
+                }
             }
         }
     } catch(err) {
