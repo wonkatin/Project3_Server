@@ -45,28 +45,11 @@ const tripExpensesSchema = new mongoose.Schema({
     date: String
 })
 const tripChecklistSchema = new mongoose.Schema({
-    title: String,
-    date: {
-        type: Date,
-        required: false,
-        default: new Date
-    },
-    clothing_and_accessories: [
+    items: [
         {
             itemName: String,
-            checked: Boolean
-        }
-    ],
-    toiletries: [
-        {
-            itemName: String,
-            checked: Boolean
-        }
-    ],
-    miscellaneous: [
-        {
-            itemName: String,
-            checked: Boolean
+            checked: Boolean,
+            category: String
         }
     ]
 })
