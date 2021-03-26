@@ -24,22 +24,18 @@ router.get('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
 router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
     try{
         tripId = req.params.tripId
+        console.log(req.body.incomingChecklist)
         const user = await User.findById(req.params.userId)
         if(user){
             const trip = await Trip.findById(tripId)
             if(trip){
                 const newTripChecklist = await TripChecklist.create({
-                    items: [
-                        {
-                            itemName: req.body.itemName,
-                            checked: req.body.checked,
-                            category: req.body.category
-                        }
-                    ]
+                    items: req.body.incomingChecklist
                 })
                 trip.tripChecklist.push(newTripChecklist)
                 await trip.save()
-                res.json(newTripChecklist )
+                console.log(newTripChecklist)
+                res.json(newTripChecklist)
             }  
         }
     } catch(err) {
