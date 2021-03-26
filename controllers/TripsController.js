@@ -2,6 +2,12 @@ const router = require('express').Router()
 const User = require('../models/User.js')
 const { Trip } = require('../models/Trip.js')
 const authLockedRoute = require('./authLockedRoute')
+
+
+
+
+
+
 //show trips
 router.get('/:userId/trips', async (req, res) => {
     try{

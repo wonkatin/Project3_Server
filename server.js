@@ -35,6 +35,10 @@ app.use('/users', require('./controllers/UsersController'))
 app.use('/users', require('./controllers/TripsController'))
 app.use('/users', require('./controllers/TripExpensesController'))
 app.use('/users', require('./controllers/TripChecklistController'))
+app.use('/users', require('./controllers/FlightInfoController'))
+app.use('/users', require('./controllers/LodgingInfoController'))
+app.use('/users', require('./controllers/TripScheduleController'))
+app.use('/users', require('./controllers/TripNotesController'))
 
 
 // tell express to listen on a port
