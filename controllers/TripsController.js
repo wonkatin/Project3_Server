@@ -2,7 +2,7 @@ const router = require('express').Router()
 const User = require('../models/User.js')
 const { Trip } = require('../models/Trip.js')
 const authLockedRoute = require('./authLockedRoute')
-
+//show trips
 router.get('/:userId/trips', async (req, res) => {
     try{
         const id = req.params.userId
@@ -13,7 +13,7 @@ router.get('/:userId/trips', async (req, res) => {
         console.log(err)
     }
 })
-
+//create trip
 router.post('/:userId/trips', async (req, res) => {
     try{
         const user = await User.findById(req.params.userId)
@@ -32,7 +32,7 @@ router.post('/:userId/trips', async (req, res) => {
         console.log(err)
     }
 })
-
+//show one trip
 router.get('/:userId/trips/:tripId', async (req, res) => {
     try{
         const user= await User.findById(req.params.userId)
@@ -44,7 +44,7 @@ router.get('/:userId/trips/:tripId', async (req, res) => {
         console.log(err)
     }
 })
-
+//update trip
 router.put('/:userId/trips/:tripId', async (req, res) => {
     try{
         const user = await User.findById(req.params.userId)
@@ -64,7 +64,7 @@ router.put('/:userId/trips/:tripId', async (req, res) => {
         console.log(err)
     }
 })
-
+//delete trip
 router.delete('/:userId/trips/:tripId', async (req, res) =>{
     try{
         const user= await User.findById(req.params.userId)
