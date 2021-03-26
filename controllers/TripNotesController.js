@@ -38,6 +38,23 @@ router.post('/:userId/trips/:tripId/notes', async (req, res) => {
     }
 })
 
+router.delete('/:userId/trips/:tripId/notes/:noteId', async (req, res) =>{
+    try{
+        const user = await User.findById(req.params.userId)
+        if(user){
+            const trip = await Trip.findById(req.params.tripId)
+            if(trip){
+                const deletedNote = await trip.notes.id(req.params.noteId).remove()
+                await trip.save()
+                res.json({ msg: 'Deleted Note'})
+            } 
+        }
+        
+    } catch(err) {
+        console.log(err)
+    }
+})
+
 
 
 

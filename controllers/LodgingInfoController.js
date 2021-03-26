@@ -44,6 +44,23 @@ router.post('/:userId/trips/:tripId/lodgingInfo', async (req, res) => {
 })
 
 
+router.delete('/:userId/trips/:tripId/lodgingInfo/:lodgingInfoId', async (req, res) =>{
+    try{
+        const user = await User.findById(req.params.userId)
+        if(user){
+            const trip = await Trip.findById(req.params.tripId)
+            if(trip){
+                const deletedLodgingInfo = await trip.lodgingInfo.id(req.params.lodgingInfoId).remove()
+                await trip.save()
+                res.json({ msg: 'Deleted lodgingInfo'})
+            } 
+        }
+        
+    } catch(err) {
+        console.log(err)
+    }
+})
+
 
 
 

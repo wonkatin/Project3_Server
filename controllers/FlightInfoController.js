@@ -75,17 +75,18 @@ router.put('/:userId/trips/:tripId/flightInfo/:flightInfoId', async (req, res) =
 })
 
 
-//route not workin
 router.delete('/:userId/trips/:tripId/flightInfo/:flightInfoId', async (req, res) =>{
     try{
         const user = await User.findById(req.params.userId)
         if(user){
             const trip = await Trip.findById(req.params.tripId)
             if(trip){
-                const deletedFlightInfo = await FlightInfo.findByIdAndDelete(req.params.flightInfoId)
-                res.json({ msg: 'Delted flightInfo'})
+                console.log(trip.flightInfo)
+                const deletedFlightInfo = await trip.flightInfo.id(req.params.flightInfoId).remove()
+                await trip.save()
+                res.json({ msg: 'Deleted flightInfo'})
             } 
-            // deletes in console but not in DB
+            
         }
         
     } catch(err) {
