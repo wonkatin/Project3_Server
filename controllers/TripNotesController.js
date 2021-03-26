@@ -17,6 +17,26 @@ router.get('/:userId/trips/:tripId/notes', async (req, res) => {
     }
 })
 
+router.post('/:userId/trips/:tripId/notes', async (req, res) => {
+    try{
+        const user = await User.findById(req.params.userId)
+        if(user){
+            const trip = await Trip.findById(req.params.tripId)
+            if(trip){
+                const newNote = await Notes.create({
+                    title: req.body.title,
+                    date: new Date,
+                    content: req.body.content
+                })
+                trip.notes.push(newNote)
+                await trip.save()
+                res.json(newNote)
+            }      
+        }
+    } catch(err) {
+        console.log(err)
+    }
+})
 
 
 
