@@ -12,7 +12,7 @@ const authLockedRoute = require('./authLockedRoute')
 router.get('/', (req, res) => {
     res.json({ msg:'hello from users!'})
 })
-
+//create user
 router.post('/register', async (req, res) =>{
     try{
         const findUser = await User.findOne({
@@ -60,7 +60,7 @@ router.post('/register', async (req, res) =>{
     }
 })
 
-
+//log in user
 router.post('/login', async (req, res) =>{
     try{
         const foundUser = await User.findOne({
@@ -87,7 +87,7 @@ router.post('/login', async (req, res) =>{
         res.status(500).json({ msg: 'server error'})
     }
 })
-
+//show user 
 router.get('/:userId/account', async (req, res) =>{
     try{
         const id = req.params.userId
@@ -98,7 +98,7 @@ router.get('/:userId/account', async (req, res) =>{
         console.log(err)
     }
 })
-
+//update user
 router.put('/:userId/account', authLockedRoute, async (req, res) =>{
     try{
         const updatedUser = await User.findByIdAndUpdate({
@@ -117,7 +117,7 @@ router.put('/:userId/account', authLockedRoute, async (req, res) =>{
         console.log(err)
     }
 })
-
+//delete user
 router.delete('/:userId/account', authLockedRoute, async (req, res) =>{
     try{
         const deletedUser = await User.findByIdAndDelete({

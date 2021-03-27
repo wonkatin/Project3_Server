@@ -143,12 +143,12 @@ const tripSchema = new mongoose.Schema({
         default: ''
     },
     fromDate: {
-        type: Date,
-        default: new Date
+        type: String,
+        default: ''
     },
     toDate: {
-        type: Date,
-        default: new Date
+        type: String,
+        default: ''
     },
     img:
     {
