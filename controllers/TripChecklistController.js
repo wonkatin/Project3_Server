@@ -11,7 +11,7 @@ router.get('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
         const user = await User.findById(id)
         if(user){
             const trip = await Trip.findById(req.params.tripId).populate('tripChecklist')
-            console.log(trip.tripChecklist)
+            // console.log(trip.tripChecklist)
             res.json(trip.tripChecklist)
            
         }
@@ -24,7 +24,7 @@ router.get('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
 router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
     try{
         tripId = req.params.tripId
-        console.log(req.body.incomingChecklist)
+        // console.log(req.body.incomingChecklist)
         const user = await User.findById(req.params.userId)
         if(user){
             const trip = await Trip.findById(tripId)
@@ -34,7 +34,7 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
                 })
                 trip.tripChecklist.push(newTripChecklist)
                 await trip.save()
-                console.log(newTripChecklist)
+                // console.log(newTripChecklist)
                 res.json(newTripChecklist)
             }  
         }
@@ -50,12 +50,12 @@ router.post('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req,
     try{
         tripId = req.params.tripId
         const user = await User.findById(req.params.userId)
-        console.log(user)
+        // console.log(user)
         if(user){
             const trip = await Trip.findById(tripId).populate('tripChecklist')
             if(trip){
                 const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
-                console.log(tripChecklist)
+                // console.log(tripChecklist)
                 if(tripChecklist){
                     const newItem = await tripChecklist.items.create({
                             itemName: req.body.itemName,
@@ -87,7 +87,7 @@ router.delete('/:userId/trips/:tripId/tripChecklist/:tripChecklistId/items/:item
                 // console.log(tripChecklist)
                 if(tripChecklist){
                     const deletedItem = await tripChecklist.items.id(req.params.itemId).remove()
-                    console.log(tripChecklist)
+                    // console.log(tripChecklist)
                     trip.tripChecklist = tripChecklist
                     await trip.save()
                     res.json({msg: 'Item deleted!'})
