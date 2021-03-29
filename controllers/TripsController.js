@@ -3,11 +3,6 @@ const User = require('../models/User.js')
 const { Trip } = require('../models/Trip.js')
 const authLockedRoute = require('./authLockedRoute')
 
-
-
-
-
-
 //show trips
 router.get('/:userId/trips', async (req, res) => {
     try{
@@ -82,11 +77,6 @@ router.delete('/:userId/trips/:tripId', async (req, res) =>{
         console.log(err)
     }
 })
-
-
-
-
-
 
 
 module.exports = router

@@ -91,8 +91,7 @@ router.post('/login', async (req, res) =>{
 router.get('/:userId/account', async (req, res) =>{
     try{
         const id = req.params.userId
-        const user = await User.findById(id)
-        console.log(user)
+        const user = await User.findById(id) 
         res.json(user)
     } catch(err) {
         console.log(err)
