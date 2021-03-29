@@ -51,8 +51,9 @@ router.post('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req,
         if(user){
             const trip = await Trip.findById(tripId).populate('tripChecklist')
             if(trip){
+                // console.log(trip.tripChecklist, "hello trip")
                 const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
-
+                // console.log(trip.tripChecklist, "before save")
                 if(tripChecklist){
                     const newItem = await tripChecklist.items.create({
                             itemName: req.body.itemName,
@@ -62,7 +63,8 @@ router.post('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req,
                     tripChecklist.items.push(newItem)
                     trip.tripChecklist = tripChecklist
                     await trip.save()
-                    res.json(newItem)
+                    // console.log(trip.tripChecklist, "after save")
+                    res.json({newItem, tripChecklist})
                 }
             }  
         }
@@ -78,12 +80,14 @@ router.delete('/:userId/trips/:tripId/tripChecklist/:tripChecklistId/items/:item
         if(user){
             const trip = await Trip.findById(req.params.tripId)
             if(trip){
+                // console.log(trip.tripChecklist, "hello trip")
                 const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
                 if(tripChecklist){
                     const deletedItem = await tripChecklist.items.id(req.params.itemId).remove()
-
+                    // console.log(trip.tripChecklist, "before save")
                     trip.tripChecklist = tripChecklist
                     await trip.save()
+                    // console.log(trip.tripChecklist, "after save")
                     res.json({msg: 'Item deleted!'})
                 }
             }
