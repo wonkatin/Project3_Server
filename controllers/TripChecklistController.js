@@ -3,7 +3,6 @@ const User = require('../models/User.js')
 const { Trip, TripChecklist } = require('../models/Trip.js')
 const authLockedRoute = require('./authLockedRoute')
 
-
 //show trip checklist
 router.get('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
     try{
@@ -11,7 +10,7 @@ router.get('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
         const user = await User.findById(id)
         if(user){
             const trip = await Trip.findById(req.params.tripId).populate('tripChecklist')
-            // console.log(trip.tripChecklist)
+
             res.json(trip.tripChecklist)
            
         }
@@ -24,7 +23,7 @@ router.get('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
 router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
     try{
         tripId = req.params.tripId
-        // console.log(req.body.incomingChecklist)
+
         const user = await User.findById(req.params.userId)
         if(user){
             const trip = await Trip.findById(tripId)
@@ -34,7 +33,7 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
                 })
                 trip.tripChecklist.push(newTripChecklist)
                 await trip.save()
-                // console.log(newTripChecklist)
+
                 res.json(newTripChecklist)
             }  
         }
@@ -43,19 +42,17 @@ router.post('/:userId/trips/:tripId/tripChecklist', async (req, res) => {
     }
 })
 
-
-
 //create new item inside items array
 router.post('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req, res) => {
     try{
         tripId = req.params.tripId
         const user = await User.findById(req.params.userId)
-        // console.log(user)
+
         if(user){
             const trip = await Trip.findById(tripId).populate('tripChecklist')
             if(trip){
                 const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
-                // console.log(tripChecklist)
+
                 if(tripChecklist){
                     const newItem = await tripChecklist.items.create({
                             itemName: req.body.itemName,
@@ -78,16 +75,13 @@ router.post('/:userId/trips/:tripId/tripChecklist/:tripChecklistId', async (req,
 router.delete('/:userId/trips/:tripId/tripChecklist/:tripChecklistId/items/:itemId', async (req, res) =>{
     try{
         const user= await User.findById(req.params.userId)
-        // console.log(user)
         if(user){
             const trip = await Trip.findById(req.params.tripId)
-            // console.log(trip)
             if(trip){
                 const tripChecklist = await TripChecklist.findById(req.params.tripChecklistId)
-                // console.log(tripChecklist)
                 if(tripChecklist){
                     const deletedItem = await tripChecklist.items.id(req.params.itemId).remove()
-                    // console.log(tripChecklist)
+
                     trip.tripChecklist = tripChecklist
                     await trip.save()
                     res.json({msg: 'Item deleted!'})
